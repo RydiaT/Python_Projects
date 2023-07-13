@@ -1,5 +1,4 @@
 from random import randint as r
-from tic_tac_toe import run as tic_tac
 
 # Game where you guess a number between 1 and 100 within 10 tries.
 
