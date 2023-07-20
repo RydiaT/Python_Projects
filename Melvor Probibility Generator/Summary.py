@@ -1,3 +1,6 @@
+from Extras import minimax
+
+
 def summary(results, options):
     total_extra = 0
     total_preserved = 0
@@ -21,18 +24,14 @@ def summary(results, options):
     average_doubled = round(total_doubled / options[3])
     average_both = round(total_both / options[3])
 
-    actual_preserved = ((total_preserved + total_both) / total_runs) * 100
-    actual_doubled = ((total_doubled + total_both) / total_runs) * 100
-    actual_both = (total_both / total_runs) * 100
-
     print(f"The average number of bonus items is %s, for a total of %s items made!" % (average_extra, average_extra + options[0]))
     print("Other Averages:")
     print(f"- Resources Preserved: %s" % average_preserved)
     print(f"- Items Doubled: %s" % average_doubled)
     print(f"- Both: %s" % average_both)
-    print(f"- Resources Preserved Chance: %s" % round(actual_preserved, 2))
-    print(f"- Items Doubled Chance: %s" % round(actual_doubled, 2))
-    print(f"- Both Chance: %s\n" % round(actual_both, 2))
+
+    if input("See bonus statistics? y/n ") == "y":
+        minimax(results, [total_preserved, total_doubled, total_both, total_runs])
 
     if input("See raw data? y/n ") == "y":
         print("Options:")
